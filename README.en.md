@@ -12,7 +12,7 @@ This project is a private control plane for the owner's Windows PC through Teleg
 - bot token storage in Windows Credential Manager only;
 - SQLite audit log, output redaction, and a single-instance mutex;
 - Windows Scheduled Task autostart, restart-on-failure, and battery operation;
-- mutual menu links and a vendor-neutral event contract for a separate smart-home bot.
+- a live link to the separate smart-home bot, a reciprocal link prepared in its local source, and a vendor-neutral event contract.
 
 ## Documentation
 
@@ -23,6 +23,7 @@ This project is a private control plane for the owner's Windows PC through Teleg
 - [Codex GPT](documentatie/en/codex.md)
 - [Smart-home integration](documentatie/en/slimme-woning.md)
 - [Recovery and verification](documentatie/en/herstel.md)
+- [Current acceptance status](documentatie/en/status.md)
 
 ## Quick local verification
 
@@ -33,4 +34,3 @@ Get-ScheduledTask -TaskName TelegramBeheer
 ```
 
 A real SSH acceptance test requires the remote host, user, port, and an authorized key. Those values intentionally never appear in this repository.
-

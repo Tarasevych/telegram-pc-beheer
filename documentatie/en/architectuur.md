@@ -8,8 +8,9 @@ flowchart LR
   A --> S[System SSH client]
   A --> C[Local Codex CLI]
   B --> L[SQLite audit and JSONL events]
-  B <--> D[Mutual deep links]
-  D <--> H[Separate Slimme Woning bot]
+  B --> D[Live deep link]
+  D --> H[Separate Slimme Woning bot]
+  H -. prepared for deployment .-> B
   L -. future adapter .-> M[MQTT or signed HTTPS]
 ```
 
@@ -25,4 +26,3 @@ Key boundaries:
 6. Telegram bots do not receive other bots' messages. Smart-home cooperation therefore uses deep links and a separate event contract.
 
 The event contract carries `opstart_id`, monotonic `volgnummer`, random `bericht_id`, timestamp, actor, function, action, target, and status. Status values match the home-core contract: `ontvangen`, `aanvaard`, `uitgevoerd`, `geweigerd`, `mislukt`, `verlopen`, and `onzeker`.
-

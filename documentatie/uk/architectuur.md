@@ -8,8 +8,9 @@ flowchart LR
   A --> S[Системний SSH-клієнт]
   A --> C[Локальний Codex CLI]
   B --> L[SQLite-аудит і JSONL-події]
-  B <--> D[Взаємні deep-links]
-  D <--> H[Окремий бот Slimme Woning]
+  B --> D[Live deep-link]
+  D --> H[Окремий бот Slimme Woning]
+  H -. підготовлено до deployment .-> B
   L -. майбутній адаптер .-> M[MQTT або підписаний HTTPS]
 ```
 
@@ -25,4 +26,3 @@ flowchart LR
 6. Боти Telegram не отримують повідомлень від інших ботів. Взаємодія з розумним будинком відбувається через deep-link та окремий подієвий контракт.
 
 Подієвий контракт містить `opstart_id`, монотонний `volgnummer`, випадковий `bericht_id`, час, актора, функцію, дію, ціль і статус. Статуси узгоджені з ядром будинку: `ontvangen`, `aanvaard`, `uitgevoerd`, `geweigerd`, `mislukt`, `verlopen`, `onzeker`.
-
