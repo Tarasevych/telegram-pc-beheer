@@ -1,0 +1,11 @@
+{
+  "eigenaar_ids": [123456789],
+  "werkmap": "C:\\Users\\uw-naam\\Documents\\Telegram",
+  "slimme_woning_bot": "uw_Slimme_Woning_bot",
+  "volledig_beheer": false,
+  "codex_actief": true,
+  "opdracht_timeout_seconden": 90,
+  "codex_timeout_seconden": 900,
+  "max_antwoordtekens": 3500
+}
+

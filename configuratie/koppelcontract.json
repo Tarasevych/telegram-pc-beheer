@@ -1,0 +1,15 @@
+{
+  "contract": "be.tarasevych.slimme-woning.besturing.v1",
+  "bron": "telegram-beheer",
+  "doel": "slimme-woning-kern",
+  "transporten": ["telegram-deeplink", "lokaal-jsonl", "toekomstig-mqtt-of-https"],
+  "velden": ["opstart_id", "volgnummer", "bericht_id", "tijd", "actor", "functie", "actie", "doel", "status"],
+  "statussen": ["ontvangen", "aanvaard", "uitgevoerd", "geweigerd", "mislukt", "verlopen", "onzeker"],
+  "regels": [
+    "Alleen een toegelaten actor mag opdrachten publiceren.",
+    "Een bericht_id wordt door iedere ontvanger idempotent verwerkt.",
+    "Fysieke toestand wordt nooit afgeleid uit alleen een verzonden opdracht.",
+    "Bot-tokens en andere geheimen komen nooit in gebeurtenissen of documentatie."
+  ]
+}
+

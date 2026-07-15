@@ -1,0 +1,7 @@
+gegevens/
+*.log
+__pycache__/
+.pytest_cache/
+configuratie/instellingen.json
+configuratie/ssh-doelen.json
+
