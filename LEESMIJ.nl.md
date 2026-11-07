@@ -1,6 +1,6 @@
 # Tarasevych GPT — pc-beheer via Telegram
 
-**Taal:** Nederlands | [Українська (Oekraïens)](README.uk.md) | [Tweetalig overzicht (README.md)](README.md) | [Beveiligingsbeleid (BEVEILIGING.nl.md)](BEVEILIGING.nl.md)
+**Taal:** Nederlands | [Українська (Oekraïens)](ОГЛЯД.uk.md) | [Tweetalig overzicht (README.md)](README.md) | [Beveiligingsbeleid (BEVEILIGING.nl.md)](BEVEILIGING.nl.md)
 
 Dit project vormt een persoonlijk besturingscentrum voor de Windows-pc van de eigenaar via Telegram. De gebruikersteksten zijn in het Oekraïens opgesteld; technische bestandspaden en interne aanduidingen gebruiken het Nederlands waar Cyrillische tekens ongeschikt zijn.
 

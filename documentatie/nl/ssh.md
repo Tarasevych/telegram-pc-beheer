@@ -1,6 +1,6 @@
 # SSH-verbindingen en externe apparaten
 
-**Taal:** Nederlands | [Українська (Oekraïens)](../uk/захищене-зєднання-ssh.md) | [Nederlands overzicht (LEESMIJ.nl.md)](../../LEESMIJ.nl.md) | [Hoofdpagina (README.md)](../../README.md)
+**Taal:** Nederlands | [Українська (Oekraïens)](../uk/захищене-зєднання-безпечної-оболонки.md) | [Nederlands overzicht (LEESMIJ.nl.md)](../../LEESMIJ.nl.md) | [Hoofdpagina (README.md)](../../README.md)
 
 Op de computer is uitsluitend de standaard OpenSSH-client van Windows vereist. De bot installeert of opent geen enkele SSH-server voor inkomende verbindingen.
 
