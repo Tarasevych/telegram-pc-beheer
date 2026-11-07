@@ -344,7 +344,7 @@ def configure_profile(api: TelegramAPI) -> None:
         {"command": "uitvoeren", "description": "PowerShell із підтвердженням"}, {"command": "audit", "description": "Журнал безпеки"},
     ]
     api.call("setMyCommands", commands=commands, language_code="uk")
-    api.call("setMyDescription", description="Приватний україномовний центр віддаленого керування ПК: Codex GPT, SSH, діагностика, аудит і міст до Tarasevych Slimme Woning.", language_code="uk")
+    api.call("setMyDescription", description="Приватний українськомовний центр віддаленого керування ПК: Codex GPT, SSH, діагностика, аудит і міст до Tarasevych Slimme Woning.", language_code="uk")
     api.call("setMyShortDescription", short_description="Codex GPT, SSH і безпечне керування вашим ПК", language_code="uk")
 
 
