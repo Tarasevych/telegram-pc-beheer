@@ -168,7 +168,7 @@ class BeheerBot:
     def help_text(self) -> str:
         return ("<b>ℹ️ Керування</b>\n\n"
                 "/start — головне меню\n/status — стан ПК\n/processen — активні процеси\n/netwerk — мережа\n/opslag — диски\n"
-                "/ssh — SSH-підключення\n/codex запит — доручити задачу Codex GPT\n"
+                "/ssh — SSH-під’єднання\n/codex запит — доручити задачу Codex GPT\n"
                 "/uitvoeren PowerShell — команда з окремим підтвердженням\n/audit — останні події\n/annuleren — скасувати майстер\n\n"
                 "Небезпечні й довільні команди ніколи не виконуються одним повідомленням: потрібна свіжа кнопка підтвердження.")
 
@@ -217,7 +217,7 @@ class BeheerBot:
 
     def ssh_menu(self) -> tuple[str, dict]:
         targets = load_json(SSH_TARGETS, [])
-        lines = ["<b>🔐 SSH-підключення з цього ПК</b>", "", "Підключення використовують системний OpenSSH-клієнт і ключі без копіювання секретів у Telegram."]
+        lines = ["<b>🔐 SSH-під’єднання з цього ПК</b>", "", "Під’єднання використовують системний OpenSSH-клієнт і ключі без копіювання секретів у Telegram."]
         rows = []
         for item in targets:
             lines.append(f"• {html.escape(item['naam'])}: <code>{html.escape(item['host'])}</code>:{item['poort']}")
@@ -239,7 +239,7 @@ class BeheerBot:
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=15)
             ok = result.returncode == 0 and "TELEGRAM_BEHEER_SSH_OK" in result.stdout
             self.audit.write(actor, "ssh.test", "uitgevoerd" if ok else "mislukt", target["naam"])
-            self.send(chat_id, ("✅ SSH-підключення і автентифікація працюють." if ok else "❌ SSH не підтверджено. Перевірте host, порт, ключ і authorized_keys."), self.ssh_menu()[1])
+            self.send(chat_id, ("✅ SSH-під’єднання і автентифікація працюють." if ok else "❌ SSH не підтверджено. Перевірте host, порт, ключ і authorized_keys."), self.ssh_menu()[1])
         except Exception as exc:
             self.audit.write(actor, "ssh.test", "mislukt", str(exc)); self.send(chat_id, f"❌ SSH: {html.escape(str(exc))}", self.ssh_menu()[1])
 
@@ -311,13 +311,13 @@ class BeheerBot:
         if not self.is_authorized(user_id, chat): self.audit.write(user_id, "callback", "geweigerd", data); return
         if data in ("menu:home",): self.send(chat_id, "Головне меню", self.main_keyboard())
         elif data == "menu:status": self.send(chat_id, self.status_text(), self.main_keyboard())
-        elif data == "menu:codex": self.send(chat_id, "<b>🧠 Codex GPT</b>\n\nНадішліть <code>/codex ваш запит</code>. Codex працює у вибраній робочій папці та повертає підсумок сюди.", self.main_keyboard())
+        elif data == "menu:codex": self.send(chat_id, "<b>🧠 Codex GPT</b>\n\nНадішліть <code>/codex ваш запит</code>. Codex працює у вибраній робочій теці та повертає підсумок сюди.", self.main_keyboard())
         elif data == "menu:ssh": self.send(chat_id, *self.ssh_menu())
         elif data == "menu:commands": self.send(chat_id, self.help_text(), self.main_keyboard())
         elif data == "menu:help": self.send(chat_id, self.help_text(), self.main_keyboard())
         elif data == "menu:audit":
             rows = self.audit.recent(); self.send(chat_id, "<b>📜 Аудит</b>\n" + ("\n".join(f"• {r[0][11:19]} — {html.escape(r[1])}: {html.escape(r[2])}" for r in rows) or "Подій немає."), self.main_keyboard())
-        elif data == "ssh:add": self.wizards[chat_id] = {"step": "name"}; self.send(chat_id, "Введіть відображувану назву SSH-підключення. Для скасування: /annuleren")
+        elif data == "ssh:add": self.wizards[chat_id] = {"step": "name"}; self.send(chat_id, "Введіть відображувану назву SSH-під’єднання. Для скасування: /annuleren")
         elif data.startswith("ssh:test:"): threading.Thread(target=self.ssh_test, args=(chat_id, user_id, data.split(":", 2)[2]), daemon=True).start()
         elif data.startswith("confirm:"):
             _, nonce, answer = data.split(":", 2); pending = self.pending.pop(nonce, None)
@@ -340,7 +340,7 @@ def acquire_mutex() -> Any:
 def configure_profile(api: TelegramAPI) -> None:
     commands = [
         {"command": "start", "description": "Головне меню"}, {"command": "status", "description": "Стан цього ПК"},
-        {"command": "ssh", "description": "SSH-підключення"}, {"command": "codex", "description": "Задача для Codex GPT"},
+        {"command": "ssh", "description": "SSH-під’єднання"}, {"command": "codex", "description": "Задача для Codex GPT"},
         {"command": "uitvoeren", "description": "PowerShell із підтвердженням"}, {"command": "audit", "description": "Журнал безпеки"},
     ]
     api.call("setMyCommands", commands=commands, language_code="uk")

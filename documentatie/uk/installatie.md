@@ -11,7 +11,7 @@
 ## Секрети та конфігурація
 
 1. Скопіюйте `configuratie/instellingen.voorbeeld.json` у `configuratie/instellingen.json`.
-2. Встановіть правильний Telegram owner ID і робочу папку.
+2. Встановіть правильний Telegram owner ID і робочу теку.
 3. Запустіть `gereedschap/configureren.py`. Токен вводиться приховано й потрапляє до Windows Credential Manager під service `TelegramBeheer`, username `bot_token`.
 4. Не додавайте `instellingen.json` або `ssh-doelen.json` у Git.
 
